@@ -7,17 +7,18 @@ namespace ProjectEuler
     {
         static int hangmanGraphicsID;
         static char[] alphabetCharArray = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-        static char[] lettersGuessed;
+        static char[] lettersGuessed = new char[alphabetCharArray.Length];
         static char[] guessedCharArray;
+
         static void Main()
         {
-            hangmanGraphicsID = -1;
             Console.Clear();
+            hangmanGraphicsID = -1;
             OutputGraphics(10);
+
             Console.WriteLine();
             Console.WriteLine("Type a word that you would like to guess in this game");
             string stringToGuess = Console.ReadLine().ToUpper().Replace(" ", "");
-            Console.Clear();
 
             foreach (char letter in stringToGuess)
             {
@@ -27,19 +28,19 @@ namespace ProjectEuler
                 }
             }
 
-            OutputGraphics(10);
+            guessedCharArray = new char[stringToGuess.Length];
+            ReplaceCharArray(lettersGuessed, '-');
+            ReplaceCharArray(guessedCharArray, '-');
+            SolveHangman(stringToGuess, guessedCharArray);
+        }
+        static void SolveHangman(string stringToGuess, char[] guessedCharArray)
+        {
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("Type a letter, and see if you can guess my word. Good Luck");
             char guessedChar = Char.ToUpper(Console.ReadKey().KeyChar);
-
-            guessedCharArray = new char[stringToGuess.Length];
-            lettersGuessed = new char[] { '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', };
-
             Console.Clear();
-            SolveHangman(guessedChar, stringToGuess, guessedCharArray);
-        }
-        static void SolveHangman(char guessedChar, string stringToGuess, char[] guessedCharArray)
-        {
-            Console.Clear();
+
             bool isGuessEdited = false;
 
             for (int i = 0; i < stringToGuess.Length; i++)
@@ -65,38 +66,12 @@ namespace ProjectEuler
                 hangmanGraphicsID++;
             }
 
-            for (int i = 0; i < alphabetCharArray.Length; i++)
-            {
-                if (alphabetCharArray[i] == guessedChar)
-                {
-                    lettersGuessed[i] = guessedChar;
-                }
-            }
-
+            ReturnIfTyped(guessedChar);
             OutputGraphics(hangmanGraphicsID);
 
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            foreach (char element in guessedCharArray)
-            {
-                Console.Write("  {0}  ", element);
-            }
-
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            foreach (char element in lettersGuessed)
-            {
-                Console.Write("  {0}  ", element);
-            }
-
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Type a letter, and see if you can guess my word. Good Luck");
-            guessedChar = Char.ToUpper(Console.ReadKey().KeyChar);
-            SolveHangman(guessedChar, stringToGuess, guessedCharArray);
+            PrintCharArray(guessedCharArray);
+            PrintCharArray(lettersGuessed);
+            SolveHangman(stringToGuess, guessedCharArray);
         }
 
         static void EndResult(string wordGuessed, string outcome, char[] yourGuess)
@@ -105,30 +80,14 @@ namespace ProjectEuler
             if (wordGuessed != "won")
             {
                 OutputGraphics(hangmanGraphicsID);
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine();
             }
             else
             {
                 OutputGraphics(hangmanGraphicsID);
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine();
             }
 
-            foreach (char element in guessedCharArray)
-            {
-                Console.Write("  {0}  ", element);
-            }
-
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            foreach (char element in lettersGuessed)
-            {
-                Console.Write("  {0}  ", element);
-            }
+            PrintCharArray(guessedCharArray);
+            PrintCharArray(lettersGuessed);
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("You {0}, the word was {1}!\nPress any key to try again", outcome, wordGuessed);
@@ -144,6 +103,34 @@ namespace ProjectEuler
             Main();
         }
 
+        static void ReturnIfTyped(char guessedChar)
+        {
+            for (int i = 0; i < alphabetCharArray.Length; i++)
+            {
+                if (alphabetCharArray[i] == guessedChar)
+                {
+                    lettersGuessed[i] = guessedChar;
+                }
+            }
+        }
+
+        static void PrintCharArray(char[] charArray)
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+            foreach (char element in charArray)
+            {
+                Console.Write("  {0}  ", element);
+            }
+        }
+
+        static void ReplaceCharArray(char[] charArray, char charToReplace)
+        {
+            for (int i = 0; i < charArray.Length; i++)
+            {
+                charArray[i] = charToReplace;
+            }
+        }
         static void OutputGraphics(int hangmanGraphicsID)
         {
             switch (hangmanGraphicsID)
