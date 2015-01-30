@@ -31,6 +31,7 @@ namespace ProjectEuler
             guessedCharArray = new char[stringToGuess.Length];
             ReplaceCharArray(lettersGuessed, '-');
             ReplaceCharArray(guessedCharArray, '-');
+
             SolveHangman(stringToGuess, guessedCharArray);
         }
         static void SolveHangman(string stringToGuess, char[] guessedCharArray)
@@ -54,7 +55,14 @@ namespace ProjectEuler
 
             if (stringToGuess == new string(guessedCharArray))
             {
-                EndResult(stringToGuess, "won", guessedCharArray);
+                if (EndResult(stringToGuess, "won", guessedCharArray))
+                {
+                    return;
+                }
+                else
+                {
+                    Main();
+                }
             }
             else if (hangmanGraphicsID == 9)
             {
@@ -74,25 +82,25 @@ namespace ProjectEuler
             SolveHangman(stringToGuess, guessedCharArray);
         }
 
-        static void EndResult(string wordGuessed, string outcome, char[] yourGuess)
+        static bool EndResult(string wordGuessed, string outcome, char[] yourGuess)
         {
             Console.Clear();
-            if (wordGuessed != "won")
-            {
-                OutputGraphics(hangmanGraphicsID);
-            }
-            else
-            {
-                OutputGraphics(hangmanGraphicsID);
-            }
 
             PrintCharArray(guessedCharArray);
             PrintCharArray(lettersGuessed);
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("You {0}, the word was {1}!\nPress any key to try again", outcome, wordGuessed);
-            Console.ReadKey();
-            Main();
+            Console.WriteLine("You {0}, the word was {1}!\nPress any key to try again, or press N to close", outcome, wordGuessed);
+            if (Char.ToUpper(Console.ReadKey().KeyChar) == 'N')
+            {
+                Console.WriteLine("Thanks for playing!");
+                return true;
+            }
+            else
+            {
+                Console.Clear();
+                return false;
+            }
         }
 
         static void PrintError(string error)
