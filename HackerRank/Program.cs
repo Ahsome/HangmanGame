@@ -132,7 +132,10 @@ namespace HangmanCode
         static void PrintError(string error)
         {
             Console.Clear();
-            Console.WriteLine("An error has occured in the game\nError: {0}\nPress any key to try again", error);
+            OutputGraphics(10);
+            Console.WriteLine();
+            Console.WriteLine("An error has occured in the game\n\nError: {0}\n\nPress any key to try again", error);
+            Console.WriteLine();
             Console.ReadKey();
             Main();
         }
