@@ -45,8 +45,6 @@ namespace HangmanCode
 
             bool isGuessEdited = false;
 
-           
-
             for (int i = 0; i < stringToGuess.Length; i++)
             {
                 if (!Char.IsLetter(guessedChar))
