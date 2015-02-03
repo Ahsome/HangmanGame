@@ -32,6 +32,7 @@ namespace HangmanCode
             ReplaceCharArray(lettersGuessed, '_');
             ReplaceCharArray(guessedCharArray, '_');
 
+            ReplaceGuessWithSpace(stringToGuess);
             SolveHangman(stringToGuess, guessedCharArray);
         }
 
@@ -61,10 +62,6 @@ namespace HangmanCode
                 {
                     guessedCharArray[i] = guessedChar;
                     isGuessEdited = true;
-                }
-                else if (stringToGuess[i] == ' ')
-                {
-                    guessedCharArray[i] = ' ';
                 }
             }
 
@@ -125,6 +122,16 @@ namespace HangmanCode
             }
         }
 
+        static void ReplaceGuessWithSpace(string stringToGuess)
+        {
+            for (int i = 0; i < stringToGuess.Length; i++)
+            {
+                if (stringToGuess[i] == ' ')
+                {
+                    guessedCharArray[i] = ' ';
+                }
+            }
+        }
         static void PrintError(string error)
         {
             Console.Clear();
