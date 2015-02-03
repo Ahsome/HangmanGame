@@ -203,182 +203,113 @@ namespace HangmanCode
             {
 
                 case -1:
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
                     break;
+
                 case 0:
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("                                                       ");
-                    Console.WriteLine("        __________________________________             ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
                     break;
 
                 case 1:
-                    Console.WriteLine("                                                      ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("        _______|__________________________             ");
+                    Console.WriteLine(" __________");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
                     break;
 
                 case 2:
-                    Console.WriteLine("        __________________________________             ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("        _______|__________________________             ");
+                    Console.WriteLine(" __________");
+                    Console.WriteLine("| /");
+                    Console.WriteLine("|/");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
                     break;
 
                 case 3:
-                    Console.WriteLine("        __________________________________             ");
-                    Console.WriteLine("               |    /                                  ");
-                    Console.WriteLine("               |  /                                    ");
-                    Console.WriteLine("               |/                                      ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("        _______|__________________________             ");
+                    Console.WriteLine(" __________");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
                     break;
 
                 case 4:
-                    Console.WriteLine("        __________________________________             ");
-                    Console.WriteLine("               |    /           |                      ");
-                    Console.WriteLine("               |  /             |                      ");
-                    Console.WriteLine("               |/                                      ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("        _______|__________________________             ");
+                    Console.WriteLine(" __________");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
                     break;
 
                 case 5:
-                    Console.WriteLine("        __________________________________             ");
-                    Console.WriteLine("               |    /           |                      ");
-                    Console.WriteLine("               |  /             |                      ");
-                    Console.WriteLine("               |/               O                      ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("        _______|__________________________             ");
+                    Console.WriteLine(" __________");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
+                    Console.WriteLine("|          |");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
                     break;
 
                 case 6:
-                    Console.WriteLine("        __________________________________             ");
-                    Console.WriteLine("               |    /           |                      ");
-                    Console.WriteLine("               |  /             |                      ");
-                    Console.WriteLine("               |/               O                      ");
-                    Console.WriteLine("               |                |                      ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("        _______|__________________________             ");
+                    Console.WriteLine(" __________");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
+                    Console.WriteLine("|         /|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
                     break;
 
                 case 7:
-                    Console.WriteLine("        __________________________________             ");
-                    Console.WriteLine("               |    /           |                      ");
-                    Console.WriteLine("               |  /             |                      ");
-                    Console.WriteLine("               |/               O                      ");
-                    Console.WriteLine("               |               \\|                     ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("        _______|__________________________             ");
+                    Console.WriteLine(" __________");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
+                    Console.WriteLine("|         /|\\");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
                     break;
 
                 case 8:
-                    Console.WriteLine("        __________________________________             ");
-                    Console.WriteLine("               |    /           |                      ");
-                    Console.WriteLine("               |  /             |                      ");
-                    Console.WriteLine("               |/               O                      ");
-                    Console.WriteLine("               |               \\|/                     ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("        _______|__________________________             ");
+                    Console.WriteLine(" __________");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
+                    Console.WriteLine("|         /|\\");
+                    Console.WriteLine("|         /");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
                     break;
 
                 case 9:
-                    Console.WriteLine("        __________________________________             ");
-                    Console.WriteLine("               |    /           |                      ");
-                    Console.WriteLine("               |  /             |                      ");
-                    Console.WriteLine("               |/               O                      ");
-                    Console.WriteLine("               |               \\|/                     ");
-                    Console.WriteLine("               |               /                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("        _______|__________________________             ");
-                    break;
-
-                case 10:
-                    Console.WriteLine("        __________________________________             ");
-                    Console.WriteLine("               |    /           |                      ");
-                    Console.WriteLine("               |  /             |                      ");
-                    Console.WriteLine("               |/               O                      ");
-                    Console.WriteLine("               |               \\|/                     ");
-                    Console.WriteLine("               |               / \\                     ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("               |                                       ");
-                    Console.WriteLine("        _______|__________________________             ");
+                    Console.WriteLine(" __________");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
+                    Console.WriteLine("|         /|\\");
+                    Console.WriteLine("|         / \\");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
                     break;
             }
         }
