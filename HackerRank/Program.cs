@@ -5,12 +5,6 @@ namespace HangmanCode
 {
     class HangmanLogic
     {
-        /*
-        Things to do:
-         * Make all errors call one specific function
-         * Rewrite error function to look better
-         * Fix issue with space bar, simply add a space, and then remove it from the string afterwards 
-        */
         static int hangmanGraphicsID;
         static char[] alphabetCharArray = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
         static char[] lettersGuessed = new char[alphabetCharArray.Length];
@@ -30,7 +24,7 @@ namespace HangmanCode
             {
                 if (!Char.IsLetter(letter))
                 {
-                    PrintError("The word you provided include characters that do not classify as letters, which are not supported");
+                    PrintError("The word you provided include characters that do not classify as letters");
                 }
             }
 
@@ -132,6 +126,9 @@ namespace HangmanCode
         static void PrintError(string error)
         {
             Console.Clear();
+            OutputGraphics(10);
+
+            Console.WriteLine();
             Console.WriteLine("An error has occured in the game\nError: {0}\nPress any key to try again", error);
             Console.ReadKey();
             Main();
