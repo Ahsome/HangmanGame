@@ -22,7 +22,7 @@ namespace HangmanCode
 
             foreach (char letter in stringToGuess)
             {
-                if (!Char.IsLetter(letter))
+                if (!Char.IsLetter(letter) && letter != ' ')
                 {
                     PrintError("The word you provided include characters that do not classify as letters");
                 }
@@ -57,10 +57,14 @@ namespace HangmanCode
                     isGuessEdited = true;
                     break;
                 }
-                if (guessedChar == stringToGuess[i])
+                if (stringToGuess[i] == guessedChar)
                 {
                     guessedCharArray[i] = guessedChar;
                     isGuessEdited = true;
+                }
+                else if (stringToGuess[i] == ' ')
+                {
+                    guessedCharArray[i] = ' ';
                 }
             }
 
