@@ -19,7 +19,6 @@ namespace HangmanCode
             Console.WriteLine();
             Console.WriteLine("Type a word that you would like to guess in this game");
             string stringToGuess = Console.ReadLine().ToUpper();
-
             bool areThereLetters = false;
 
             foreach (char letter in stringToGuess)
@@ -27,6 +26,9 @@ namespace HangmanCode
                 if (!Char.IsLetter(letter) && letter != ' ')
                 {
                     PrintError("The word you provided include characters that do not classify as letters.");
+                }
+                if (!areThereLetters && letter != ' ')
+                {
                     areThereLetters = true;
                 }
             }
