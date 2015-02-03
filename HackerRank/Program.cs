@@ -22,15 +22,15 @@ namespace ProjectEuler
 
             foreach (char letter in stringToGuess)
             {
-                if (Char.IsNumber(letter))
+                if (!Char.IsLetter(letter))
                 {
-                    PrintError("The word you provided included a number/s, which is not supported");
+                    PrintError("Sorry, words must be composed of letters.");
                 }
             }
 
             guessedCharArray = new char[stringToGuess.Length];
-            ReplaceCharArray(lettersGuessed, '-');
-            ReplaceCharArray(guessedCharArray, '-');
+            ReplaceCharArray(lettersGuessed, '_');
+            ReplaceCharArray(guessedCharArray, '_');
 
             SolveHangman(stringToGuess, guessedCharArray);
         }
