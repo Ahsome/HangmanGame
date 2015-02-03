@@ -176,8 +176,8 @@ namespace ProjectEuler
 
                 case 2:
                     Console.WriteLine(" __________");
-                    Console.WriteLine("|          |");
-                    Console.WriteLine("|");
+                    Console.WriteLine("| /");
+                    Console.WriteLine("|/");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
@@ -186,8 +186,8 @@ namespace ProjectEuler
 
                 case 3:
                     Console.WriteLine(" __________");
-                    Console.WriteLine("|          |");
-                    Console.WriteLine("|          0");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
@@ -196,9 +196,9 @@ namespace ProjectEuler
 
                 case 4:
                     Console.WriteLine(" __________");
-                    Console.WriteLine("|          |");
-                    Console.WriteLine("|          0");
-                    Console.WriteLine("|          |");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
+                    Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
@@ -206,9 +206,9 @@ namespace ProjectEuler
 
                 case 5:
                     Console.WriteLine(" __________");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
                     Console.WriteLine("|          |");
-                    Console.WriteLine("|          0");
-                    Console.WriteLine("|         /|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
@@ -216,9 +216,9 @@ namespace ProjectEuler
 
                 case 6:
                     Console.WriteLine(" __________");
-                    Console.WriteLine("|          |");
-                    Console.WriteLine("|          0");
-                    Console.WriteLine("|         /|\\");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
+                    Console.WriteLine("|         /|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
@@ -226,8 +226,8 @@ namespace ProjectEuler
 
                 case 7:
                     Console.WriteLine(" __________");
-                    Console.WriteLine("|          |");
-                    Console.WriteLine("|          0");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
                     Console.WriteLine("|         /|\\");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
@@ -236,8 +236,8 @@ namespace ProjectEuler
 
                 case 8:
                     Console.WriteLine(" __________");
-                    Console.WriteLine("|          |");
-                    Console.WriteLine("|          0");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
                     Console.WriteLine("|         /|\\");
                     Console.WriteLine("|         /");
                     Console.WriteLine("|");
@@ -246,8 +246,8 @@ namespace ProjectEuler
 
                 case 9:
                     Console.WriteLine(" __________");
-                    Console.WriteLine("|          |");
-                    Console.WriteLine("|          0");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
                     Console.WriteLine("|         /|\\");
                     Console.WriteLine("|         / \\");
                     Console.WriteLine("|");
