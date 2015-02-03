@@ -7,8 +7,8 @@
     <ProjectGuid>{3021DA92-C471-4875-BDC7-F008992A0C39}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HackerRank</RootNamespace>
-    <AssemblyName>HackerRank</AssemblyName>
+    <RootNamespace>HangmanGame</RootNamespace>
+    <AssemblyName>HangmanGame</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
