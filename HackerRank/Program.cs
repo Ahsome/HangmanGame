@@ -243,7 +243,7 @@ namespace HangmanCode
                     break;
 
                 case 3:
-                    Console.WriteLine(" __________");
+                    Console.WriteLine(" ___________");
                     Console.WriteLine("| /");
                     Console.WriteLine("|/");
                     Console.WriteLine("|");
@@ -253,7 +253,7 @@ namespace HangmanCode
                     break;
 
                 case 4:
-                    Console.WriteLine(" __________");
+                    Console.WriteLine(" ___________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/");
                     Console.WriteLine("|");
@@ -263,7 +263,7 @@ namespace HangmanCode
                     break;
 
                 case 5:
-                    Console.WriteLine(" __________");
+                    Console.WriteLine(" ___________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
                     Console.WriteLine("|");
@@ -273,7 +273,7 @@ namespace HangmanCode
                     break;
 
                 case 6:
-                    Console.WriteLine(" __________");
+                    Console.WriteLine(" ___________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
                     Console.WriteLine("|          |");
@@ -283,7 +283,7 @@ namespace HangmanCode
                     break;
 
                 case 7:
-                    Console.WriteLine(" __________");
+                    Console.WriteLine(" ___________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
                     Console.WriteLine("|         /|");
@@ -293,7 +293,7 @@ namespace HangmanCode
                     break;
 
                 case 8:
-                    Console.WriteLine(" __________");
+                    Console.WriteLine(" ___________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
                     Console.WriteLine("|         /|\\");
@@ -303,7 +303,7 @@ namespace HangmanCode
                     break;
 
                 case 9:
-                    Console.WriteLine(" __________");
+                    Console.WriteLine(" ___________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
                     Console.WriteLine("|         /|\\");
@@ -313,7 +313,7 @@ namespace HangmanCode
                     break;
 
                 case 10:
-                    Console.WriteLine(" __________");
+                    Console.WriteLine(" ___________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
                     Console.WriteLine("|         /|\\");
