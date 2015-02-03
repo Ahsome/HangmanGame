@@ -35,8 +35,8 @@ namespace HangmanCode
             }
 
             guessedCharArray = new char[stringToGuess.Length];
-            ReplaceCharArray(lettersGuessed, '-');
-            ReplaceCharArray(guessedCharArray, '-');
+            ReplaceCharArray(lettersGuessed, '_');
+            ReplaceCharArray(guessedCharArray, '_');
 
             SolveHangman(stringToGuess, guessedCharArray);
         }
