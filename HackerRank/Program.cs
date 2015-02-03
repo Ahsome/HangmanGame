@@ -1,10 +1,16 @@
 using System;
 using System.Collections.Generic;
 
-namespace ProjectEuler
+namespace HangmanCode
 {
-    class Solution
+    class HangmanLogic
     {
+        /*
+        Things to do:
+         * Make all errors call one specific function
+         * Rewrite error function to look better
+         * Fix issue with space bar, simply add a space, and then remove it from the string afterwards 
+        */
         static int hangmanGraphicsID;
         static char[] alphabetCharArray = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
         static char[] lettersGuessed = new char[alphabetCharArray.Length];
@@ -18,7 +24,7 @@ namespace ProjectEuler
 
             Console.WriteLine();
             Console.WriteLine("Type a word that you would like to guess in this game");
-            string stringToGuess = Console.ReadLine().ToUpper().Replace(" ", "");
+            string stringToGuess = Console.ReadLine().ToUpper().Replace(" ", string.Empty);
 
             foreach (char letter in stringToGuess)
             {
@@ -34,6 +40,7 @@ namespace ProjectEuler
 
             SolveHangman(stringToGuess, guessedCharArray);
         }
+
         static void SolveHangman(string stringToGuess, char[] guessedCharArray)
         {
             Console.WriteLine();
@@ -44,8 +51,20 @@ namespace ProjectEuler
 
             bool isGuessEdited = false;
 
+           
+
             for (int i = 0; i < stringToGuess.Length; i++)
             {
+                if (!Char.IsLetter(guessedChar))
+                {
+                    isGuessEdited = true;
+                    break;
+                }
+                if (CheckIfTyped(guessedChar))
+                {
+                    isGuessEdited = true;
+                    break;
+                }
                 if (guessedChar == stringToGuess[i])
                 {
                     guessedCharArray[i] = guessedChar;
@@ -66,7 +85,14 @@ namespace ProjectEuler
             }
             else if (hangmanGraphicsID == 9)
             {
-                EndResult(stringToGuess, "lost", guessedCharArray);
+                if (EndResult(stringToGuess, "lost", guessedCharArray))
+                {
+                    return;
+                }
+                else
+                {
+                    Main();
+                }
             }
 
             if (!isGuessEdited)
@@ -74,20 +100,20 @@ namespace ProjectEuler
                 hangmanGraphicsID++;
             }
 
-            ReturnIfTyped(guessedChar);
+            ChangeCharOnType(guessedChar);
             OutputGraphics(hangmanGraphicsID);
 
-            PrintCharArray(guessedCharArray);
-            PrintCharArray(lettersGuessed);
+            OutputCharArray(guessedCharArray);
+            OutputCharArray(lettersGuessed);
             SolveHangman(stringToGuess, guessedCharArray);
         }
 
         static bool EndResult(string wordGuessed, string outcome, char[] yourGuess)
         {
             Console.Clear();
-
-            PrintCharArray(guessedCharArray);
-            PrintCharArray(lettersGuessed);
+            OutputGraphics(hangmanGraphicsID);
+            OutputCharArray(guessedCharArray);
+            OutputCharArray(lettersGuessed);
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("You {0}, the word was {1}!\nPress any key to try again, or press N to close", outcome, wordGuessed);
@@ -111,7 +137,7 @@ namespace ProjectEuler
             Main();
         }
 
-        static void ReturnIfTyped(char guessedChar)
+        static void ChangeCharOnType(char guessedChar)
         {
             for (int i = 0; i < alphabetCharArray.Length; i++)
             {
@@ -122,16 +148,6 @@ namespace ProjectEuler
             }
         }
 
-        static void PrintCharArray(char[] charArray)
-        {
-            Console.WriteLine();
-            Console.WriteLine();
-            foreach (char element in charArray)
-            {
-                Console.Write("  {0}  ", element);
-            }
-        }
-
         static void ReplaceCharArray(char[] charArray, char charToReplace)
         {
             for (int i = 0; i < charArray.Length; i++)
@@ -139,6 +155,48 @@ namespace ProjectEuler
                 charArray[i] = charToReplace;
             }
         }
+
+        static void CheckIfWon(string stringToGuess)
+        {
+            if (stringToGuess == new string(guessedCharArray))
+            {
+                if (EndResult(stringToGuess, "won", guessedCharArray))
+                {
+                    return;
+                }
+                else
+                {
+                    Main();
+                }
+            }
+            else if (hangmanGraphicsID == 9)
+            {
+                EndResult(stringToGuess, "lost", guessedCharArray);
+            }
+        }
+
+        static bool CheckIfTyped(char guessedChar)
+        {
+            for (int i = 0; i < lettersGuessed.Length; i++)
+            {
+                if (guessedChar == lettersGuessed[i])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        static void OutputCharArray(char[] charArray)
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+            foreach (char element in charArray)
+            {
+                Console.Write(" {0} ", element);
+            }
+        }
+
         static void OutputGraphics(int hangmanGraphicsID)
         {
             switch (hangmanGraphicsID)
