@@ -214,82 +214,82 @@ namespace HangmanCode
 
                 case 0:
                     Console.WriteLine(" ");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine("________________");
                     break;
 
                 case 1:
+                    Console.WriteLine(" ");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|_______________");
+                    break;
+
+                case 2:
                     Console.WriteLine(" __________");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
-                    Console.WriteLine("|");
+                    Console.WriteLine("|_______________");
                     break;
 
-                case 2:
+                case 3:
                     Console.WriteLine(" __________");
                     Console.WriteLine("| /");
                     Console.WriteLine("|/");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
-                    Console.WriteLine("|");
+                    Console.WriteLine("|_______________");
                     break;
 
-                case 3:
+                case 4:
                     Console.WriteLine(" __________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    break;
-
-                case 4:
-                    Console.WriteLine(" __________");
-                    Console.WriteLine("| /        |");
-                    Console.WriteLine("|/         0");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
+                    Console.WriteLine("|_______________");
                     break;
 
                 case 5:
                     Console.WriteLine(" __________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
-                    Console.WriteLine("|          |");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
+                    Console.WriteLine("|_______________");
                     break;
 
                 case 6:
                     Console.WriteLine(" __________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
-                    Console.WriteLine("|         /|");
+                    Console.WriteLine("|          |");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
-                    Console.WriteLine("|");
+                    Console.WriteLine("|_______________");
                     break;
 
                 case 7:
                     Console.WriteLine(" __________");
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
-                    Console.WriteLine("|         /|\\");
+                    Console.WriteLine("|         /|");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
-                    Console.WriteLine("|");
+                    Console.WriteLine("|_______________");
                     break;
 
                 case 8:
@@ -297,9 +297,9 @@ namespace HangmanCode
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
                     Console.WriteLine("|         /|\\");
-                    Console.WriteLine("|         /");
                     Console.WriteLine("|");
                     Console.WriteLine("|");
+                    Console.WriteLine("|_______________");
                     break;
 
                 case 9:
@@ -307,9 +307,19 @@ namespace HangmanCode
                     Console.WriteLine("| /        |");
                     Console.WriteLine("|/         0");
                     Console.WriteLine("|         /|\\");
+                    Console.WriteLine("|         /");
+                    Console.WriteLine("|");
+                    Console.WriteLine("|_______________");
+                    break;
+
+                case 10:
+                    Console.WriteLine(" __________");
+                    Console.WriteLine("| /        |");
+                    Console.WriteLine("|/         0");
+                    Console.WriteLine("|         /|\\");
                     Console.WriteLine("|         / \\");
                     Console.WriteLine("|");
-                    Console.WriteLine("|");
+                    Console.WriteLine("|_______________");
                     break;
             }
         }
