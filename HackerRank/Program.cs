@@ -31,17 +31,23 @@ namespace HangmanCode
             guessedCharArray = new char[stringToGuess.Length];
             ReplaceCharArray(lettersGuessed, '_');
             ReplaceCharArray(guessedCharArray, '_');
-
             ReplaceGuessWithSpace(stringToGuess);
+
+            Console.Clear();
+            OutputGraphics(10);
+
             SolveHangman(stringToGuess, guessedCharArray);
         }
 
         static void SolveHangman(string stringToGuess, char[] guessedCharArray)
         {
             Console.WriteLine();
-            Console.WriteLine();
             Console.WriteLine("Type a letter, and see if you can guess my word. Good Luck");
             char guessedChar = Char.ToUpper(Console.ReadKey().KeyChar);
+            if (!Char.IsLetter(guessedChar))
+            {
+                PrintError("The character you provided does not classify as a letter");
+            }
             Console.Clear();
 
             bool isGuessEdited = false;
@@ -98,6 +104,7 @@ namespace HangmanCode
 
             OutputCharArray(guessedCharArray);
             OutputCharArray(lettersGuessed);
+            Console.WriteLine();
             SolveHangman(stringToGuess, guessedCharArray);
         }
 
