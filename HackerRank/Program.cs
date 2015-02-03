@@ -18,7 +18,7 @@ namespace HangmanCode
 
             Console.WriteLine();
             Console.WriteLine("Type a word that you would like to guess in this game");
-            string stringToGuess = Console.ReadLine().ToUpper().Replace(" ", string.Empty);
+            string stringToGuess = Console.ReadLine().ToUpper();
 
             foreach (char letter in stringToGuess)
             {
