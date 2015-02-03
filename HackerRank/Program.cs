@@ -24,17 +24,17 @@ namespace HangmanCode
 
             Console.WriteLine();
             Console.WriteLine("Type a word that you would like to guess in this game");
-            string stringToGuess = Console.ReadLine().ToUpper().Replace(" ", string.Empty);
-
+            string stringToGuess = Console.ReadLine().ToUpper();
+            guessedCharArray = stringToGuess.ToCharArray();
+            
             foreach (char letter in stringToGuess)
             {
-                if (!Char.IsLetter(letter))
+                if (!Char.IsLetter(letter) && !Char.IsSeparator(letter))
                 {
                     PrintError("The word you provided include characters that do not classify as letters, which are not supported");
                 }
             }
 
-            guessedCharArray = new char[stringToGuess.Length];
             ReplaceCharArray(lettersGuessed, '_');
             ReplaceCharArray(guessedCharArray, '_');
 
@@ -152,7 +152,14 @@ namespace HangmanCode
         {
             for (int i = 0; i < charArray.Length; i++)
             {
-                charArray[i] = charToReplace;
+                if (!Char.IsSeparator(charArray[i]))
+                {
+                    charArray[i] = charToReplace;
+                }
+                else
+                {
+                    charArray[i] = charArray[i];
+                }
             }
         }
 
