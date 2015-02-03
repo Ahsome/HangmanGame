@@ -19,6 +19,10 @@ namespace HangmanCode
             Console.WriteLine();
             Console.WriteLine("Type a word that you would like to guess in this game");
             string stringToGuess = Console.ReadLine().ToUpper();
+            if(stringToGuess.Length > 27)
+            {
+                PrintError("The word/s provided have exceeded the character limit");
+            }
             bool areThereLetters = false;
 
             foreach (char letter in stringToGuess)
@@ -57,6 +61,7 @@ namespace HangmanCode
             if (!Char.IsLetter(guessedChar))
             {
                 PrintError("The character you provided does not classify as a letter");
+                return;
             }
             Console.Clear();
 
