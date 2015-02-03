@@ -20,12 +20,20 @@ namespace HangmanCode
             Console.WriteLine("Type a word that you would like to guess in this game");
             string stringToGuess = Console.ReadLine().ToUpper();
 
+            bool areThereLetters = false;
+
             foreach (char letter in stringToGuess)
             {
                 if (!Char.IsLetter(letter) && letter != ' ')
                 {
-                    PrintError("The word you provided include characters that do not classify as letters");
+                    PrintError("The word you provided include characters that do not classify as letters.");
+                    areThereLetters = true;
                 }
+            }
+
+            if (!areThereLetters)
+            {
+                PrintError("The word you provided consists entirely of spaces.");
             }
 
             guessedCharArray = new char[stringToGuess.Length];
