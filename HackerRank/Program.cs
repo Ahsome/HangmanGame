@@ -28,9 +28,9 @@ namespace HangmanCode
 
             foreach (char letter in stringToGuess)
             {
-                if (Char.IsNumber(letter))
+                if (!Char.IsLetter(letter))
                 {
-                    PrintError("The word you provided included a number/s, which is not supported");
+                    PrintError("The word you provided include characters that do not classify as letters, which are not supported");
                 }
             }
 
