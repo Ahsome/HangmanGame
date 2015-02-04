@@ -166,7 +166,7 @@ namespace HangmanCode
             {
                 EndResult(stringToGuess, "won", guessedCharArray);
             }
-            else if (hangmanGraphicsID == 9)
+            else if (hangmanGraphicsID == 10)
             {
                 EndResult(stringToGuess, "lost", guessedCharArray);
             }
@@ -202,7 +202,7 @@ namespace HangmanCode
                     break;
 
                 case 0:
-                    Console.WriteLine("\n\n\n\n\n\n________________");
+                    Console.WriteLine("\n\n\n\n\n\n_________________");
                     break;
 
                 case 1:
