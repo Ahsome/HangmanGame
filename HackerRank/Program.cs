@@ -186,7 +186,7 @@ namespace HangmanCode
 
         static void OutputCharArray(char[] charArray)
         {
-            Console.WriteLine("\n");
+            Console.WriteLine();
             foreach (char element in charArray)
             {
                 Console.Write(" {0} ", element);
@@ -197,7 +197,6 @@ namespace HangmanCode
         {
             switch (hangmanGraphicsID)
             {
-
                 case -1:
                     Console.WriteLine("\n\n\n\n\n\n");
                     break;
