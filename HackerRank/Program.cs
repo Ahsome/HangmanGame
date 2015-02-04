@@ -16,8 +16,7 @@ namespace HangmanCode
             hangmanGraphicsID = -1;
             OutputGraphics(10);
 
-            Console.WriteLine();
-            Console.WriteLine("Type a word that you would like to guess in this game");
+            Console.WriteLine("\nType a word that you would like to guess in this game");
             string stringToGuess = Console.ReadLine().ToUpper();
             if(stringToGuess.Length > 27)
             {
@@ -55,8 +54,7 @@ namespace HangmanCode
 
         static void SolveHangman(string stringToGuess, char[] guessedCharArray)
         {
-            Console.WriteLine();
-            Console.WriteLine("Type a letter, and see if you can guess my word. Good Luck");
+            Console.WriteLine("\nType a letter, and see if you can guess my word. Good Luck");
             char guessedChar = Char.ToUpper(Console.ReadKey().KeyChar);
             if (!Char.IsLetter(guessedChar))
             {
@@ -129,9 +127,7 @@ namespace HangmanCode
             OutputGraphics(hangmanGraphicsID);
             OutputCharArray(guessedCharArray);
             OutputCharArray(lettersGuessed);
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("You {0}, the word was {1}!\nPress any key to try again, or press N to close", outcome, wordGuessed);
+            Console.WriteLine("\n\nYou {0}, the word was {1}!\nPress any key to try again, or press N to close", outcome, wordGuessed);
             if (Char.ToUpper(Console.ReadKey().KeyChar) == 'N')
             {
                 Console.WriteLine("Thanks for playing!");
@@ -159,8 +155,7 @@ namespace HangmanCode
             Console.Clear();
             OutputGraphics(10);
 
-            Console.WriteLine();
-            Console.WriteLine("An error has occured in the game\nError: {0}\nPress any key to try again", error);
+            Console.WriteLine("\nAn error has occured in the game\nError: {0}\nPress any key to try again", error);
             Console.ReadKey();
             Main();
         }
@@ -217,8 +212,7 @@ namespace HangmanCode
 
         static void OutputCharArray(char[] charArray)
         {
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("\n");
             foreach (char element in charArray)
             {
                 Console.Write(" {0} ", element);
@@ -231,123 +225,51 @@ namespace HangmanCode
             {
 
                 case -1:
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
+                    Console.WriteLine("\n\n\n\n\n\n");
                     break;
 
                 case 0:
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
-                    Console.WriteLine(" ");
-                    Console.WriteLine("________________");
+                    Console.WriteLine("\n\n\n\n\n\n________________");
                     break;
 
                 case 1:
-                    Console.WriteLine(" ");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|_______________");
+                    Console.WriteLine("\n|\n|\n|\n|\n|\n|_______________");
                     break;
 
                 case 2:
-                    Console.WriteLine(" __________");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|_______________");
+                    Console.WriteLine(" __________\n|\n|\n|\n|\n|\n|_______________");
                     break;
 
                 case 3:
-                    Console.WriteLine(" ___________");
-                    Console.WriteLine("| /");
-                    Console.WriteLine("|/");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|_______________");
+                    Console.WriteLine(" ___________\n| /\n|/\n|\n|\n|\n|_______________");
                     break;
 
                 case 4:
-                    Console.WriteLine(" ___________");
-                    Console.WriteLine("| /        |");
-                    Console.WriteLine("|/");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|_______________");
+                    Console.WriteLine(" ___________\n| /        |\n|/\n|\n|\n|\n|\n|_______________");
                     break;
 
                 case 5:
-                    Console.WriteLine(" ___________");
-                    Console.WriteLine("| /        |");
-                    Console.WriteLine("|/         0");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|_______________");
+                    Console.WriteLine(" ___________\n| /        |\n|/         0\n|\n|\n|\n|_______________");
                     break;
 
                 case 6:
-                    Console.WriteLine(" ___________");
-                    Console.WriteLine("| /        |");
-                    Console.WriteLine("|/         0");
-                    Console.WriteLine("|          |");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|_______________");
+                    Console.WriteLine(" ___________\n| /        |\n|/         0\n|          |\n|\n|\n|_______________");
                     break;
 
                 case 7:
-                    Console.WriteLine(" ___________");
-                    Console.WriteLine("| /        |");
-                    Console.WriteLine("|/         0");
-                    Console.WriteLine("|         /|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|_______________");
+                    Console.WriteLine(" ___________\n| /        |\n|/         0\n|         /|\n|\n|\n|_______________");
                     break;
 
                 case 8:
-                    Console.WriteLine(" ___________");
-                    Console.WriteLine("| /        |");
-                    Console.WriteLine("|/         0");
-                    Console.WriteLine("|         /|\\");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|_______________");
+                    Console.WriteLine(" ___________\n| /        |\n|/         0\n|         /|\\\n|\n|\n|_______________");
                     break;
 
                 case 9:
-                    Console.WriteLine(" ___________");
-                    Console.WriteLine("| /        |");
-                    Console.WriteLine("|/         0");
-                    Console.WriteLine("|         /|\\");
-                    Console.WriteLine("|         /");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|_______________");
+                    Console.WriteLine(" ___________\n| /        |\n|/         0\n|         /|\\\n|         /\n|\n|_______________");
                     break;
 
                 case 10:
-                    Console.WriteLine(" ___________");
-                    Console.WriteLine("| /        |");
-                    Console.WriteLine("|/         0");
-                    Console.WriteLine("|         /|\\");
-                    Console.WriteLine("|         / \\");
-                    Console.WriteLine("|");
-                    Console.WriteLine("|_______________");
+                    Console.WriteLine(" ___________\n| /        |\n|/         0\n|         /|\\\n|         / \\\n|\n|_______________");
                     break;
             }
         }
