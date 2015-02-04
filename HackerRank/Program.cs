@@ -18,30 +18,7 @@ namespace HangmanCode
 
             Console.WriteLine("\nType a word that you would like to guess in this game");
             string stringToGuess = Console.ReadLine().ToUpper();
-
-            bool areThereLetters = false;
-
-            for (int i = 0; i < stringToGuess.Length; i++ )
-            {
-                if (!areThereLetters && stringToGuess[i] != ' ')
-                {
-                    areThereLetters = true;
-                }
-                if (!Char.IsLetter(stringToGuess[i]) && stringToGuess[i] != ' ')
-                {
-                    PrintError("The word you provided include characters that do not classify as letters");
-                }
-                if(stringToGuess[i] == ' ' && stringToGuess[i] == stringToGuess[i+1])
-                {
-                    stringToGuess = stringToGuess.Remove(i + 1, 1);
-                    i--;
-                }
-            }
-
-            if (!areThereLetters)
-            {
-                PrintError("The word you provided consists entirely of spaces.");
-            }
+            CheckWordSupport(stringToGuess);
 
             guessedCharArray = new char[stringToGuess.Length];
             ReplaceCharArray(lettersGuessed, '_');
@@ -182,6 +159,33 @@ namespace HangmanCode
                 }
             }
             return false;
+        }
+
+        static void CheckWordSupport(string stringToGuess)
+        {
+            bool areThereLetters = false;
+
+            for (int i = 0; i < stringToGuess.Length; i++)
+            {
+                if (!areThereLetters && stringToGuess[i] != ' ')
+                {
+                    areThereLetters = true;
+                }
+                if (!Char.IsLetter(stringToGuess[i]) && stringToGuess[i] != ' ')
+                {
+                    PrintError("The word you provided include characters that do not classify as letters");
+                }
+                if (stringToGuess[i] == ' ' && stringToGuess[i] == stringToGuess[i + 1])
+                {
+                    stringToGuess = stringToGuess.Remove(i + 1, 1);
+                    i--;
+                }
+            }
+
+            if (!areThereLetters)
+            {
+                PrintError("The word you provided consists entirely of spaces.");
+            }
         }
 
         static void OutputCharArray(char[] charArray)
