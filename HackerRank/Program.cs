@@ -19,21 +19,23 @@ namespace HangmanCode
             Console.WriteLine();
             Console.WriteLine("Type a word that you would like to guess in this game");
             string stringToGuess = Console.ReadLine().ToUpper();
-            if(stringToGuess.Length > 27)
-            {
-                PrintError("The word/s provided have exceeded the character limit");
-            }
+
             bool areThereLetters = false;
 
-            foreach (char letter in stringToGuess)
+            for (int i = 0; i < stringToGuess.Length; i++ )
             {
-                if (!Char.IsLetter(letter) && letter != ' ')
-                {
-                    PrintError("The word you provided include characters that do not classify as letters.");
-                }
-                if (!areThereLetters && letter != ' ')
+                if (!areThereLetters && stringToGuess[i] != ' ')
                 {
                     areThereLetters = true;
+                }
+                if (!Char.IsLetter(stringToGuess[i]) && stringToGuess[i] != ' ')
+                {
+                    PrintError("The word you provided include characters that do not classify as letters");
+                }
+                if(stringToGuess[i] == ' ' && stringToGuess[i] == stringToGuess[i+1])
+                {
+                    stringToGuess = stringToGuess.Remove(i + 1, 1);
+                    i--;
                 }
             }
 
@@ -61,7 +63,6 @@ namespace HangmanCode
             if (!Char.IsLetter(guessedChar))
             {
                 PrintError("The character you provided does not classify as a letter");
-                return;
             }
             Console.Clear();
 
@@ -86,28 +87,7 @@ namespace HangmanCode
                 }
             }
 
-            if (stringToGuess == new string(guessedCharArray))
-            {
-                if (EndResult(stringToGuess, "won", guessedCharArray))
-                {
-                    return;
-                }
-                else
-                {
-                    Main();
-                }
-            }
-            else if (hangmanGraphicsID == 9)
-            {
-                if (EndResult(stringToGuess, "lost", guessedCharArray))
-                {
-                    return;
-                }
-                else
-                {
-                    Main();
-                }
-            }
+            CheckIfWon(stringToGuess);
 
             if (!isGuessEdited)
             {
@@ -123,7 +103,7 @@ namespace HangmanCode
             SolveHangman(stringToGuess, guessedCharArray);
         }
 
-        static bool EndResult(string wordGuessed, string outcome, char[] yourGuess)
+        static void EndResult(string wordGuessed, string outcome, char[] yourGuess)
         {
             Console.Clear();
             OutputGraphics(hangmanGraphicsID);
@@ -135,12 +115,12 @@ namespace HangmanCode
             if (Char.ToUpper(Console.ReadKey().KeyChar) == 'N')
             {
                 Console.WriteLine("Thanks for playing!");
-                return true;
+                Environment.Exit(0);
             }
             else
             {
                 Console.Clear();
-                return false;
+                Main();
             }
         }
 
@@ -154,6 +134,7 @@ namespace HangmanCode
                 }
             }
         }
+
         static void PrintError(string error)
         {
             Console.Clear();
@@ -188,14 +169,7 @@ namespace HangmanCode
         {
             if (stringToGuess == new string(guessedCharArray))
             {
-                if (EndResult(stringToGuess, "won", guessedCharArray))
-                {
-                    return;
-                }
-                else
-                {
-                    Main();
-                }
+                EndResult(stringToGuess, "won", guessedCharArray);
             }
             else if (hangmanGraphicsID == 9)
             {

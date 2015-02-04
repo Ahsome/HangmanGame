@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangmanGame", "HackerRank\HangmanGame.csproj", "{3021DA92-C471-4875-BDC7-F008992A0C39}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EF5896A0-5DB4-4345-9DB0-7BE385BD9EB2}"
+	ProjectSection(SolutionItems) = preProject
+		Lewen4Life.cs = Lewen4Life.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
