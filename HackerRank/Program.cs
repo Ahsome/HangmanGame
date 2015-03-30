@@ -3,19 +3,12 @@ using System.Linq;
 
 namespace HangmanGame
 {
-    internal class HangmanLogic
+    internal class Hangman
     {
         static readonly string[] Graphics = {"", "", "", "", "", ""};
-        private static int wrongGuesses;
-
-        private static readonly char[] AlphabetCharArray =
-        {
-            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-            'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-        };
-
-        private static readonly char[] LettersGuessed = new char[26];
-        private static char[] guessedCharArray;
+        static int wrongGuesses;
+        static readonly char[] LettersGuessed = new char[26];
+        static char[] guessedCharArray;
 
         private static void Main()
         {
@@ -24,15 +17,19 @@ namespace HangmanGame
             FinalGraphics();
 
             Console.WriteLine("\nType a word that you would like to guess in this game");
-            var readLine = Console.ReadLine();
-            if (readLine == null) return;
-            var stringToGuess = readLine.ToUpper();
-            CheckWordSupport(stringToGuess);
+            var stringToGuess = Console.ReadLine();
+            if (stringToGuess == null) return;
+            stringToGuess = stringToGuess.ToUpper();
+
+            var thereAreLetters = stringToGuess.Any(Char.IsLetter);
+            while (stringToGuess.Contains("  ")) stringToGuess = stringToGuess.Replace("  ", " ");
+            if (stringToGuess.Any(t => !Char.IsLetter(t) && t != ' ')) PrintError("The word you provided include characters that do not classify as letters");
+            if (!thereAreLetters) PrintError("The word you provided consists entirely of spaces.");
 
             guessedCharArray = new char[stringToGuess.Length];
-            ReplaceCharArray(LettersGuessed, '_');
-            ReplaceCharArray(guessedCharArray, '_');
-            ReplaceGuessWithSpace(stringToGuess);
+            Fill(LettersGuessed, '_');
+            Fill(guessedCharArray, '_');
+            for (var i = 0; i < stringToGuess.Length; i++) if (stringToGuess[i] == ' ') guessedCharArray[i] = ' ';
             Console.Clear();
             FinalGraphics();
             SolveHangman(stringToGuess);
@@ -45,18 +42,17 @@ namespace HangmanGame
             {
                 var guessedChar = Char.ToUpper(Console.ReadKey(true).KeyChar);
                 if (!Char.IsLetter(guessedChar)) continue;
-                
                 var guessIsEdited = false;
-
-                if (!Char.IsLetter(guessedChar) || CheckIfTyped(guessedChar)) guessIsEdited = true;
+                if (!Char.IsLetter(guessedChar) || LettersGuessed.Any(t => guessedChar == t)) guessIsEdited = true;
                 else for (var i = 0; i < stringToGuess.Length; i++)
                 {
                     if (stringToGuess[i] != guessedChar) continue;
                     guessIsEdited = true;
                     guessedCharArray[i] = guessedChar;
                 }
-                CheckIfWon(stringToGuess);
-                ChangeCharOnType(guessedChar);
+                if (stringToGuess == new string(guessedCharArray)) EndResult(stringToGuess, "won");
+                else if (wrongGuesses == 10) EndResult(stringToGuess, "lost");
+                if (Char.IsLetter(guessedChar)) LettersGuessed[guessedChar - 65] = guessedChar;
                 if (guessIsEdited)
                 {
                     if (stringToGuess.All(t => t != guessedChar)) wrongGuesses++;
@@ -88,8 +84,6 @@ namespace HangmanGame
             }
         }
 
-        private static void ReplaceGuessWithSpace(string stringToGuess) { for (var i = 0; i < stringToGuess.Length; i++) if (stringToGuess[i] == ' ') guessedCharArray[i] = ' '; }
-
         private static void PrintError(string error)
         {
             Console.Clear();
@@ -99,33 +93,7 @@ namespace HangmanGame
             Main();
         }
 
-        private static void ChangeCharOnType(char guessedChar) { for (var i = 0; i < AlphabetCharArray.Length; i++) if (AlphabetCharArray[i] == guessedChar) LettersGuessed[i] = guessedChar; }
-
-        private static void ReplaceCharArray(char[] charArray, char charToReplace) { for (var i = 0; i < charArray.Length; i++) charArray[i] = charToReplace; }
-
-        private static void CheckIfWon(string stringToGuess)
-        {
-            if (stringToGuess == new string(guessedCharArray)) EndResult(stringToGuess, "won");
-            else if (wrongGuesses == 10) EndResult(stringToGuess, "lost");
-        }
-
-        private static bool CheckIfTyped(char guessedChar) { return LettersGuessed.Any(t => guessedChar == t); }
-
-        private static void CheckWordSupport(string stringToGuess)
-        {
-            var areThereLetters = false;
-
-            for (var i = 0; i < stringToGuess.Length; i++)
-            {
-                if (!areThereLetters && stringToGuess[i] != ' ') areThereLetters = true;
-                if (!Char.IsLetter(stringToGuess[i]) && stringToGuess[i] != ' ') PrintError("The word you provided include characters that do not classify as letters");
-                if (stringToGuess[i] != ' ' || stringToGuess[i] != stringToGuess[i + 1]) continue;
-                stringToGuess = stringToGuess.Remove(i + 1, 1);
-                i--;
-            }
-
-            if (!areThereLetters) PrintError("The word you provided consists entirely of spaces.");
-        }
+        private static void Fill(char[] charArray, char charToReplace) { for (var i = 0; i < charArray.Length; i++) charArray[i] = charToReplace; }
 
         private static void OutputCharArray(char[] charArray) { Console.WriteLine(); foreach (var element in charArray) Console.Write(" {0} ", element); }
 
