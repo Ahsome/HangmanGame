@@ -27,8 +27,8 @@ namespace HangmanGame
             if (!thereAreLetters) PrintError("The word you provided consists entirely of spaces.");
 
             guessedCharArray = new char[stringToGuess.Length];
-            Fill(LettersGuessed, '_');
-            Fill(guessedCharArray, '_');
+            LettersGuessed.Fill('_');
+            guessedCharArray.Fill('_');
             for (var i = 0; i < stringToGuess.Length; i++) if (stringToGuess[i] == ' ') guessedCharArray[i] = ' ';
             Console.Clear();
             FinalGraphics();
@@ -93,8 +93,6 @@ namespace HangmanGame
             Main();
         }
 
-        private static void Fill(char[] charArray, char charToReplace) { for (var i = 0; i < charArray.Length; i++) charArray[i] = charToReplace; }
-
         private static void OutputCharArray(char[] charArray) { Console.WriteLine(); foreach (var element in charArray) Console.Write(" {0} ", element); }
 
         private static void FinalGraphics()
@@ -128,5 +126,11 @@ namespace HangmanGame
             if (graphicsId == 10) Graphics[4] += " \\";
             for (var i = 0; i < 6; i++) Console.WriteLine(Graphics[i]);
         }
+    }
+
+    static class Extensions
+    {
+        public static void Fill(this char[] charArray, char charToReplace) { for (var i = 0; i < charArray.Length; i++) charArray[i] = charToReplace; }
+
     }
 }
