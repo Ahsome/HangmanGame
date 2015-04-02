@@ -5,13 +5,13 @@ namespace HangmanGame
 {
     internal class Hangman
     {
-        static readonly string[] Graphics = {"", "", "", "", "", ""};
-        static int wrongGuesses;
+        static readonly string[] Graphics = { "", "", "", "", "", "" };
         static readonly char[] LettersGuessed = new char[26];
-        static char[] guessedCharArray;
+        static int wrongGuesses; static char[] guessedCharArray;
 
         private static void Main()
         {
+            Console.CursorVisible = false;
             Console.Clear();
             wrongGuesses = -1;
             FinalGraphics();
@@ -22,10 +22,10 @@ namespace HangmanGame
             stringToGuess = stringToGuess.ToUpper();
 
             var thereAreLetters = stringToGuess.Any(Char.IsLetter);
-            while (stringToGuess.Contains("  ")) stringToGuess = stringToGuess.Replace("  ", " ");
             if (stringToGuess.Any(t => !Char.IsLetter(t) && t != ' ')) PrintError("The word you provided include characters that do not classify as letters");
             if (!thereAreLetters) PrintError("The word you provided consists entirely of spaces.");
 
+            while (stringToGuess.Contains("  ")) stringToGuess = stringToGuess.Replace("  ", " ");
             guessedCharArray = new char[stringToGuess.Length];
             LettersGuessed.Fill('_');
             guessedCharArray.Fill('_');
@@ -37,37 +37,35 @@ namespace HangmanGame
 
         private static void SolveHangman(string stringToGuess)
         {
-            Console.WriteLine("\nType a letter, and see if you can guess my word. Good Luck");
+            //Console.WriteLine("\nType a letter, and see if you can guess my word. Good Luck");
+            Console.Clear(); Console.CursorTop = 6; guessedCharArray.Output(); LettersGuessed.Output();
             while (true)
             {
+                Console.SetCursorPosition(0, 0);
                 var guessedChar = Char.ToUpper(Console.ReadKey(true).KeyChar);
                 if (!Char.IsLetter(guessedChar)) continue;
                 var guessIsEdited = false;
-                if (!Char.IsLetter(guessedChar) || LettersGuessed.Any(t => guessedChar == t)) guessIsEdited = true;
-                else for (var i = 0; i < stringToGuess.Length; i++)
+                if (LettersGuessed[guessedChar - 65] == guessedChar) continue;
+                //guessIsEdited = true;
+                for (var i = 0; i < stringToGuess.Length; i++)
                 {
                     if (stringToGuess[i] != guessedChar) continue;
                     guessIsEdited = true;
                     guessedCharArray[i] = guessedChar;
                 }
+                if (Char.IsLetter(guessedChar)) LettersGuessed[guessedChar - 65] = guessedChar;
+                if (guessIsEdited) { Console.CursorTop = 6; guessedCharArray.Output(); }
+                else IncrementGraphics();
+                Console.CursorTop = 7 + guessedCharArray.Length / 39; LettersGuessed.Output();
                 if (stringToGuess == new string(guessedCharArray)) EndResult(stringToGuess, "won");
                 else if (wrongGuesses == 10) EndResult(stringToGuess, "lost");
-                if (Char.IsLetter(guessedChar)) LettersGuessed[guessedChar - 65] = guessedChar;
-                if (guessIsEdited)
-                {
-                    if (stringToGuess.All(t => t != guessedChar)) wrongGuesses++;
-                    Console.Clear();
-                    OutputGraphics(wrongGuesses);
-                    OutputCharArray(guessedCharArray);
-                    OutputCharArray(LettersGuessed);
-                }
-                Console.WriteLine();
             }
         }
 
         private static void EndResult(string wordGuessed, string outcome)
         {
             Console.Clear();
+            Console.ReadKey();
             Console.CursorTop = 10;
             Console.WriteLine("\n\nYou {0}, the word was {1}!\nPress any key to try again, or press n to close", outcome, wordGuessed);
             if (Console.ReadKey(true).KeyChar == 'n')
@@ -93,8 +91,6 @@ namespace HangmanGame
             Main();
         }
 
-        private static void OutputCharArray(char[] charArray) { Console.WriteLine(); foreach (var element in charArray) Console.Write(" {0} ", element); }
-
         private static void FinalGraphics()
         {
             Console.WriteLine("{0}\n{1}\n{2}\n{3}\n{4}\n{5}",
@@ -106,31 +102,27 @@ namespace HangmanGame
             @"|_______________");
         }
 
-        private static void OutputGraphics(int graphicsId)
+        private static void IncrementGraphics()
         {
-            if (graphicsId == 0) Graphics[5] = " _______________";
-            if (graphicsId == 1)
-            {
-                for (var i = 1; i < 5; i++) Graphics[i] += "|";
-                Graphics[5] = Graphics[5].Remove(0, 1).Insert(0, "|"); 
-            }
-            if (graphicsId == 2) Graphics[0] = " __________";
-            if (graphicsId == 3) { Graphics[1] += " /"; Graphics[2] += "/"; }
-            if (graphicsId == 4) Graphics[1] += "        |";
-            if (graphicsId == 5) Graphics[2] += "         0";
-            if (graphicsId == 6) Graphics[3] += "          |";
-            if (graphicsId == 7) { Graphics[3] = Graphics[3].Remove(10, 1).Insert(10, "/"); }
-            //TODO: optimise
-            if (graphicsId == 8) Graphics[3] += @"\";
-            if (graphicsId == 9) Graphics[4] += "         /";
-            if (graphicsId == 10) Graphics[4] += " \\";
-            for (var i = 0; i < 6; i++) Console.WriteLine(Graphics[i]);
+            wrongGuesses++;
+            //TODO: make it console.writeline instead?
+            if (wrongGuesses == 0) { Console.CursorTop = 5; Console.Write(" _______________"); }
+            if (wrongGuesses == 1) { Console.CursorTop = 1; for (var i = 1; i < 6; i++) Console.WriteLine(Graphics[i] += "|"); }
+            if (wrongGuesses == 2) { Console.Write(" __________"); }
+            if (wrongGuesses == 3) { Console.CursorTop = 1; Console.Write("| /\n|/"); }
+            if (wrongGuesses == 4) { Console.SetCursorPosition(9, 1); Console.Write("|"); }
+            if (wrongGuesses == 5) { Console.SetCursorPosition(9, 2); Console.Write("0"); }
+            if (wrongGuesses == 6) { Console.SetCursorPosition(9, 3); Console.Write("|");}
+            if (wrongGuesses == 7) { Console.SetCursorPosition(8, 3); Console.Write("/"); }
+            if (wrongGuesses == 8) { Console.SetCursorPosition(10, 3); Console.Write(@"\"); }
+            if (wrongGuesses == 9) { Console.SetCursorPosition(8, 4); Console.Write("/"); }
+            if (wrongGuesses == 10) { Console.SetCursorPosition(10, 2); Console.Write(@" \"); }
         }
     }
 
     static class Extensions
     {
-        public static void Fill(this char[] charArray, char charToReplace) { for (var i = 0; i < charArray.Length; i++) charArray[i] = charToReplace; }
-
+        public static void Fill(this char[] array, char filler) { for (var i = 0; i < array.Length; i++) array[i] = filler; }
+        public static void Output(this char[] array) { Console.WriteLine(); foreach (var letter in array) Console.Write(" {0} ", letter); }
     }
 }
